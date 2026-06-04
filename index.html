@@ -762,6 +762,21 @@ window.Viewer3D = (function () {
     });
   }
 
+  /* Map a texture onto a face without distorting it ("cover"): keep the photo's real
+     proportions, scaling to fill the face and cropping the overflow instead of stretching. */
+  function fitCover(tex, faceAspect) {
+    if (!tex.image) return;
+    var imgAspect = tex.image.width / tex.image.height;
+    tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+    if (imgAspect > faceAspect) {
+      tex.repeat.set(faceAspect / imgAspect, 1);
+    } else {
+      tex.repeat.set(1, imgAspect / faceAspect);
+    }
+    tex.offset.set((1 - tex.repeat.x) / 2, (1 - tex.repeat.y) / 2);
+    tex.needsUpdate = true;
+  }
+
   function init(container, faces) {
     dispose();
     active = true;
@@ -785,25 +800,23 @@ window.Viewer3D = (function () {
       loadTex(loader, faces.top),   loadTex(loader, faces.bottom),
       loadTex(loader, faces.front), loadTex(loader, faces.back)
     ]).then(function (tex) {
-      var right = tex[0], front = tex[4];
-      // Derive box proportions from photo aspect ratios (height normalised to 1).
-      var H = 1;
-      var W = front.image.width / front.image.height;  // width / height
-      var D = right.image.width / right.image.height;   // depth / height
-      W = Math.min(Math.max(W, 0.3), 3);
-      D = Math.min(Math.max(D, 0.3), 3);
+      // Real Toon Box dimensions (inches): 9 (length) x 9 (breadth) x 2.5 (depth).
+      // The big 9x9 faces are the lid (top) and base (bottom); the four sides are
+      // thin 9 x 2.5 strips. Mapped to axes: X = length, Y = depth, Z = breadth.
+      var W = 9, H = 2.5, D = 9;
 
       var geo = new THREE.BoxGeometry(W, H, D);
+      // Aspect of each face (same order as the textures below): right, left, top, bottom, front, back.
+      var faceAspect = [D / H, D / H, W / D, W / D, W / H, W / H];
+      tex.forEach(function (t, i) { fitCover(t, faceAspect[i]); });
       var mats = tex.map(function (t) { return new THREE.MeshStandardMaterial({ map: t, roughness: 0.85, metalness: 0 }); });
       mesh = new THREE.Mesh(geo, mats);
-      // Lay the box down on its side so the (portrait) PITARAA label reads left-to-right.
-      // +90° about Z keeps the front face toward the camera and rotates the artwork upright.
-      mesh.rotation.z = Math.PI / 2;
       scene.add(mesh);
 
       var maxDim = Math.max(W, H, D);
       dist = maxDim * 2.6;
-      camera.position.set(0, maxDim * 0.25, dist);
+      // Angled view from front-above so the lid artwork and a couple of sides are visible.
+      camera.position.set(dist * 0.4, dist * 0.55, dist * 0.7);
 
       controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true; controls.dampingFactor = 0.08;
@@ -836,12 +849,10 @@ window.Viewer3D = (function () {
   function snap(face) {
     if (!controls) return;
     controls.autoRotate = false;
-    // Box is rotated +90° about Z, so the original top/bottom faces now point along
-    // ±X and the original right/left faces point along ±Y.
     var P = {
       front: [0, 0, dist], back: [0, 0, -dist],
-      top: [dist, 0, 0], bottom: [-dist, 0, 0],
-      right: [0, dist, 0.0001], left: [0, -dist, 0.0001]
+      right: [dist, 0, 0], left: [-dist, 0, 0],
+      top: [0, dist, 0.0001], bottom: [0, -dist, 0.0001]
     }[face] || [0, 0, dist];
     camera.position.set(P[0], P[1], P[2]);
     controls.update();
