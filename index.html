@@ -380,20 +380,20 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
         <div class="mini-kit-price">₹700</div>
         <div class="kit-badge">2+</div>
       </div>
-      <div class="mini-kit">
-        <div class="mini-kit-icon"><img src="Images/italian-brainrot.png" style="width:60px;height:60px;object-fit:contain;" alt="Italian Brainrot"/></div>
+      <div class="mini-kit clickable-360" onclick="open360('italianbrainrot')" title="View Italian Brainrot in 360°">
+        <div class="mini-kit-icon" style="position:relative;"><img src="Images/italian-brainrot.png" style="width:60px;height:60px;object-fit:contain;" alt="Italian Brainrot"/><span class="spin360-tag">🔄 3D View</span></div>
         <div class="mini-kit-name">Italian Brainrot</div>
         <div class="mini-kit-price">₹800</div>
         <div class="kit-badge">3+</div>
       </div>
-      <div class="mini-kit">
-        <div class="mini-kit-icon"><img src="Images/baby-shower.png" style="width:60px;height:60px;object-fit:contain;" alt="Baby Shower"/></div>
+      <div class="mini-kit clickable-360" onclick="open360('babyshower')" title="View Baby Shower in 360°">
+        <div class="mini-kit-icon" style="position:relative;"><img src="Images/baby-shower.png" style="width:60px;height:60px;object-fit:contain;" alt="Baby Shower"/><span class="spin360-tag">🔄 3D View</span></div>
         <div class="mini-kit-name">Baby Shower</div>
         <div class="mini-kit-price">₹1,000</div>
         <div class="kit-badge">18+</div>
       </div>
-      <div class="mini-kit">
-        <div class="mini-kit-icon"><img src="Images/merry-christmas.png" style="width:60px;height:60px;object-fit:contain;" alt="Merry Christmas"/></div>
+      <div class="mini-kit clickable-360" onclick="open360('merrychristmas')" title="View Merry Christmas in 360°">
+        <div class="mini-kit-icon" style="position:relative;"><img src="Images/merry-christmas.png" style="width:60px;height:60px;object-fit:contain;" alt="Merry Christmas"/><span class="spin360-tag">🔄 3D View</span></div>
         <div class="mini-kit-name">Merry Christmas</div>
         <div class="mini-kit-price">₹600</div>
         <div class="kit-badge">2+</div>
@@ -452,9 +452,10 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
       </div>
     </div>
     <div class="product-card" data-ages="kids,teen,adult">
-      <div class="product-img" style="background:var(--wood-grain);padding:0;overflow:hidden;">
+      <div class="product-img clickable-360" style="background:var(--wood-grain);padding:0;overflow:hidden;" onclick="open360('italianbrainrot')" title="View Italian Brainrot in 360°">
         <img src="Images/italian-brainrot.png" style="width:100%;height:100%;object-fit:contain;padding:10px;" alt="Italian Brainrot kit"/>
         <div class="age-badge">Ages 3+</div>
+        <div class="spin360-hint">🔄 3D View</div>
       </div>
       <div class="product-info">
         <div class="product-name">Italian Brainrot</div>
@@ -464,9 +465,10 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
       </div>
     </div>
     <div class="product-card" data-ages="adult">
-      <div class="product-img" style="background:var(--wood-grain);padding:0;overflow:hidden;">
+      <div class="product-img clickable-360" style="background:var(--wood-grain);padding:0;overflow:hidden;" onclick="open360('babyshower')" title="View Baby Shower in 360°">
         <img src="Images/baby-shower.png" style="width:100%;height:100%;object-fit:contain;padding:10px;" alt="Baby Shower kit"/>
         <div class="age-badge">Ages 18+</div>
+        <div class="spin360-hint">🔄 3D View</div>
       </div>
       <div class="product-info">
         <div class="product-name">Baby Shower</div>
@@ -476,9 +478,10 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
       </div>
     </div>
     <div class="product-card" data-ages="toddler,kids,teen,adult">
-      <div class="product-img" style="background:var(--wood-grain);padding:0;overflow:hidden;">
+      <div class="product-img clickable-360" style="background:var(--wood-grain);padding:0;overflow:hidden;" onclick="open360('merrychristmas')" title="View Merry Christmas in 360°">
         <img src="Images/merry-christmas.png" style="width:100%;height:100%;object-fit:contain;padding:10px;" alt="Merry Christmas kit"/>
         <div class="age-badge">Ages 2+</div>
+        <div class="spin360-hint">🔄 3D View</div>
       </div>
       <div class="product-info">
         <div class="product-name">Merry Christmas</div>
@@ -887,12 +890,48 @@ var V360 = {
     title: 'Toon Box — 3D View',
     type: '3d',
     faces: {
-      front:  'Images/360/toonbox/front.jpg',
-      back:   'Images/360/toonbox/back.jpg',
-      left:   'Images/360/toonbox/left.jpg',
-      right:  'Images/360/toonbox/right.jpg',
-      top:    'Images/360/toonbox/top.jpg',
-      bottom: 'Images/360/toonbox/bottom.jpg'
+      front:  'Images/360/fix/front.jpg',
+      back:   'Images/360/fix/back.jpg',
+      left:   'Images/360/fix/left.jpg',
+      right:  'Images/360/fix/right.jpg',
+      top:    'Images/360/fix/top/top_toonbox.jpg',
+      bottom: 'Images/360/fix/bottom.jpg'
+    }
+  },
+  italianbrainrot: {
+    title: 'Italian Brainrot — 360 View',
+    type: '3d',
+    faces: {
+      front:  'Images/360/fix/front.jpg',
+      back:   'Images/360/fix/back.jpg',
+      left:   'Images/360/fix/left.jpg',
+      right:  'Images/360/fix/right.jpg',
+      top:    'Images/360/fix/top/top_italianbrainrot.jpg',
+      bottom: 'Images/360/fix/bottom.jpg'
+    }
+  },
+  babyshower: {
+    title: 'Baby Shower — 360 View',
+    type: '3d',
+    faces: {
+      front:  'Images/360/fix/front.jpg',
+      back:   'Images/360/fix/back.jpg',
+      left:   'Images/360/fix/left.jpg',
+      right:  'Images/360/fix/right.jpg',
+      top:    'Images/360/fix/top/top_babyshower.jpg',
+      bottom: 'Images/360/fix/bottom.jpg'
+    }
+  },
+  merrychristmas: {
+    title: 'Merry Christmas — 360 View',
+    type: '3d',
+    faces: {
+      front:  'Images/360/fix/front.jpg',
+      back:   'Images/360/fix/back.jpg',
+      left:   'Images/360/fix/left.jpg',
+      right:  'Images/360/fix/right.jpg',
+      top:    'Images/360/fix/top/top_merrychristmas.jpg',
+      bottom: 'Images/360/fix/bottom.jpg'
     }
   }
 };
