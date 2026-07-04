@@ -31,6 +31,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
 .nav-links a:hover{color:#fff;}
 .nav-cta{background:var(--brand);color:#fff;border:none;padding:9px 22px;border-radius:6px;
   font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;border-bottom:3px solid var(--brand-dark);}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer;}
 
 /* ── HERO ── */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:420px;}
@@ -199,6 +200,10 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
    ════════════════════════════════ */
 @media (max-width: 992px) {
   .nav { padding: 12px 24px; }
+  .nav-toggle { display:flex; }
+  .nav-links { display:none; width:100%; flex-direction:column; gap:8px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.15); }
+  .nav-links.open { display:flex; }
+  .nav-links a { display:block; padding:10px 12px; border-radius:8px; background:rgba(255,255,255,.08); text-align:center; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 40px 30px 28px; }
   .hero h1 { font-size: 38px; }
@@ -232,10 +237,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
 
   /* NAV */
   .nav { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-  .nav-links { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+  .nav-links { display:none; flex-direction: column; gap: 10px; width: 100%; }
+  .nav-links.open { display:flex; }
   .nav-links a { width: 100%; padding: 10px 0; border-radius: 8px; background: rgba(255,255,255,.08); color: var(--wood-light); }
   .logo { font-size: 22px; }
-  .nav-cta { padding: 8px 16px; font-size: 12px; }
+  .nav-cta { padding: 8px 16px; font-size: 12px; margin-left:auto; }
 
   /* HERO */
   .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -391,7 +397,8 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
 
 <nav class="nav">
   <div class="logo">Pitaraa<em>.</em></div>
-  <div class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileNav()">☰</button>
+  <div class="nav-links" id="navLinks">
     <a href="#kits">Our Kits</a>
     <a href="#age">Shop by Age</a>
     <a href="#how">How to Order</a>
@@ -732,6 +739,24 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
 </a>
 
 <script>
+function toggleMobileNav() {
+  var links = document.getElementById('navLinks');
+  var button = document.querySelector('.nav-toggle');
+  var open = links.classList.toggle('open');
+  button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  button.textContent = open ? '✕' : '☰';
+}
+
+function closeMobileNav() {
+  var links = document.getElementById('navLinks');
+  var button = document.querySelector('.nav-toggle');
+  links.classList.remove('open');
+  if (button) {
+    button.setAttribute('aria-expanded', 'false');
+    button.textContent = '☰';
+  }
+}
+
 function filterAge(group, el) {
   document.querySelectorAll('.age-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
@@ -741,6 +766,16 @@ function filterAge(group, el) {
     card.classList.toggle('hidden', !ages.includes(group));
   });
 }
+
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    if (window.innerWidth <= 1024) closeMobileNav();
+  });
+});
+
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 1024) closeMobileNav();
+});
 </script>
 
 <script>
