@@ -19,7 +19,8 @@
 }
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
   background-image:repeating-linear-gradient(90deg,rgba(196,151,58,.04) 0px,rgba(196,151,58,.04) 1px,transparent 1px,transparent 60px),
-  repeating-linear-gradient(0deg,rgba(196,151,58,.04) 0px,rgba(196,151,58,.04) 1px,transparent 1px,transparent 60px);}
+  repeating-linear-gradient(0deg,rgba(196,151,58,.04) 0px,rgba(196,151,58,.04) 1px,transparent 1px,transparent 60px);
+  overflow-x:hidden;}
 
 /* ── NAV ── */
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 36px;
@@ -227,6 +228,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
   .includes-inner { padding: 44px 24px; }
   .includes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cta-section { margin: 0 24px 46px; padding: 36px 24px; }
   .cta-text h2 { font-size: 28px; }
   .footer { padding: 32px 24px; }
@@ -289,6 +291,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
 
   /* HOW TO ORDER */
   .steps-grid { grid-template-columns: 1fr; gap: 14px; }
+  .reviews-grid { grid-template-columns: 1fr; }
   .payment-row { gap: 8px; }
   .pay-badge { font-size: 11px; padding: 7px 12px; }
 
@@ -383,9 +386,9 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
      Replace with: your 10-digit number e.g. 919876543210
   
   2. INSTAMOJO PAYMENT LINKS:
-     https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Toon%20Box%20kit%20(₹700)        → your Toon Box payment link
+     https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Toon%20Box%20kit%20(₹750)        → your Toon Box payment link
      https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Italian%20Brainrot%20kit%20(₹800) → your Italian Brainrot link
-     https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Baby%20Shower%20kit%20(₹1000)     → your Baby Shower link
+     https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Baby%20Shower%20kit%20(₹850)     → your Baby Shower link
      https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Merry%20Christmas%20kit%20(₹600)  → your Merry Christmas link
   
   3. PRODUCT IMAGES:
@@ -414,6 +417,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
     <div class="hero-tag">🎨 MDF Laser-Cut Coloring Kits</div>
     <h1>Color It.<br><em>Create It.</em><br>Love It.</h1>
     <p>Premium MDF coloring kits — laser-cut characters, themed scenes & endless fun for ages 2 and up. No mess, all joy. Order via WhatsApp or Instagram. Delivered across India.</p>
+    <p style="margin-top:10px;font-size:13px;color:var(--wood-grain);line-height:1.7;padding:10px 12px;border-left:3px solid var(--wood-mid);background:rgba(255,255,255,0.08);border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,0.12);">Every Pitaraa includes all the essential accessories specific to the kit, thoughtfully curated to enhance your creative experience.</p>
     <div class="hero-btns">
       <a href="#kits" class="btn-primary">🎁 Shop All Kits</a>
       <a href="https://wa.me/919829428868" target="_blank" class="btn-wa">🛒 Order Now →</a>
@@ -430,7 +434,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
         </div>
         <div>
           <div class="mini-kit-name" style="color:var(--wood-light);">Rakhi Box</div>
-          <div class="mini-kit-price" style="color:var(--brand);">₹650</div>
+          <div class="mini-kit-price" style="color:var(--brand);">₹700</div>
         </div>
       </div>
       <div class="mini-kit clickable-360" onclick="open360('italianbrainrot')" title="View Italian Brainrot in 360°">
@@ -442,13 +446,13 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
       <div class="mini-kit clickable-360" onclick="open360('babyshower')" title="View Baby Shower in 360°">
         <div class="mini-kit-icon" style="position:relative;"><img src="Images/baby-shower.png" style="width:60px;height:60px;object-fit:contain;" alt="Baby Shower"/><span class="spin360-tag">🔄 3D View</span></div>
         <div class="mini-kit-name">Baby Shower</div>
-        <div class="mini-kit-price">₹900</div>
+        <div class="mini-kit-price">₹850</div>
         <div class="kit-badge">18+</div>
       </div>
       <div class="mini-kit clickable-360" onclick="open360('toonbox')" title="View Toon Box in 360°">
         <div class="mini-kit-icon" style="position:relative;"><img src="Images/toonbox.png" style="width:60px;height:60px;object-fit:contain;" alt="Toon Box"/><span class="spin360-tag">🔄 3D View</span></div>
         <div class="mini-kit-name">Toon Box</div>
-        <div class="mini-kit-price">₹700</div>
+        <div class="mini-kit-price">₹750</div>
         <div class="kit-badge">2+</div>
       </div>
       <div class="mini-kit clickable-360" onclick="open360('merrychristmas')" title="View Merry Christmas in 360°">
@@ -467,7 +471,8 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
   <div class="inc-item"><span>🔑</span> Keychain</div>
   <div class="inc-item"><span>🧲</span> Magnet</div>
   <div class="inc-item"><span>👕</span> Kid's Apron</div>
-  <div class="inc-item"><span>🚚</span> Delivered Pan-India</div>
+  <div class="inc-item"><span>🧺</span> Other Accessories</div>
+  <div class="inc-item"><span>�🚚</span> Delivered Pan-India</div>
   <div class="inc-item"><span>💳</span> Online Payments Coming Soon</div>
 </div>
 
@@ -501,8 +506,8 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
         <div style="display:inline-block;background:var(--brand);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:8px;letter-spacing:.5px;">✨ Newly Launched</div>
         <div class="product-name">Rakhi Box</div>
         <div class="product-desc">Celebrate the bond of love with a festive Rakhi-themed coloring kit that turns togetherness into a creative keepsake.</div>
-        <div class="product-price">₹650 <span>incl. GST</span></div>
-        <a href="https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Rakhi%20Box%20kit%20(₹650)" target="_blank" class="buy-btn">🛒 Order Now →</a>
+        <div class="product-price">₹700 <span>incl. GST</span></div>
+        <a href="https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Rakhi%20Box%20kit%20(₹700)" target="_blank" class="buy-btn">🛒 Order Now →</a>
       </div>
     </div>
     <div class="product-card" data-ages="kids,teen,adult">
@@ -527,8 +532,8 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
       <div class="product-info">
         <div class="product-name">Baby Shower</div>
         <div class="product-desc">Perfect gifting kit for baby shower events — sweet, delightful MDF characters to color and keep.</div>
-        <div class="product-price">₹900 <span>incl. GST</span></div>
-        <a href="https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Baby%20Shower%20kit%20(₹900)" target="_blank" class="buy-btn">🛒 Order Now →</a>
+        <div class="product-price">₹850 <span>incl. GST</span></div>
+        <a href="https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Baby%20Shower%20kit%20(₹850)" target="_blank" class="buy-btn">🛒 Order Now →</a>
       </div>
     </div>
     <div class="product-card" data-ages="toddler,kids,teen,adult">
@@ -540,8 +545,8 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
       <div class="product-info">
         <div class="product-name">Toon Box</div>
         <div class="product-desc">Color your favorite cartoon characters on beautifully laser-cut MDF pieces. A classic for all ages!</div>
-        <div class="product-price">₹700 <span>incl. GST</span></div>
-        <a href="https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Toon%20Box%20kit%20(₹700)" target="_blank" class="buy-btn">🛒 Order Now →</a>
+        <div class="product-price">₹750 <span>incl. GST</span></div>
+        <a href="https://wa.me/919829428868?text=Hi!%20I%20want%20to%20order%20the%20Toon%20Box%20kit%20(₹750)" target="_blank" class="buy-btn">🛒 Order Now →</a>
       </div>
     </div>
     <div class="product-card" data-ages="toddler,kids,teen,adult">
@@ -709,11 +714,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
   <div>
     <h4>Our Kits</h4>
     <ul>
-      <li><a href="#">Toon Box — ₹700</a></li>
+      <li><a href="#">Toon Box — ₹750</a></li>
       <li><a href="#">Italian Brainrot — ₹800</a></li>
-      <li><a href="#">Baby Shower — ₹900</a></li>
+      <li><a href="#">Baby Shower — ₹850</a></li>
       <li><a href="#">Merry Christmas — ₹600</a></li>
-      <li><a href="#">Raksha Bandhan — ₹600</a></li>
+      <li><a href="#">Rakhi Box — ₹700</a></li>
     </ul>
   </div>
   <div>
