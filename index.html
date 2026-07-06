@@ -3,7 +3,55 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#E07B1A" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="canonical" href="https://pitaraa.in/" />
+<meta name="description" content="Pitaraa offers premium MDF laser-cut coloring kits for kids and families across India. Order themed kits easily via WhatsApp or Instagram and enjoy mess-free creative fun." />
+<meta property="og:title" content="Pitaraa — MDF Coloring Kits" />
+<meta property="og:description" content="Pitaraa offers premium MDF laser-cut coloring kits for kids and families across India. Order themed kits easily via WhatsApp or Instagram and enjoy mess-free creative fun." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://pitaraa.in/index.html" />
+<meta property="og:image" content="https://pitaraa.in/Images/socialtag.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pitaraa — MDF Coloring Kits" />
+<meta name="twitter:description" content="Pitaraa offers premium MDF laser-cut coloring kits for kids and families across India. Order themed kits easily via WhatsApp or Instagram and enjoy mess-free creative fun." />
+<meta name="twitter:image" content="https://pitaraa.in/Images/socialtag.png" />
 <meta name="google-site-verification" content="googlea39c7276ad21791f" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Pitaraa",
+      "url": "https://pitaraa.in/",
+      "logo": "https://pitaraa.in/Images/socialtag.png",
+      "description": "Pitaraa offers premium MDF coloring kits and creative products for kids and families across India.",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+919829428868",
+          "contactType": "customer service",
+          "areaServed": "IN"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/anjas_pitaraa.in"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://pitaraa.in/",
+      "name": "Pitaraa",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://pitaraa.in/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/x-icon" href="Images/favicon.ico"/>
 <link rel="apple-touch-icon" href="Images/favicon.ico"/>
 <title>Pitaraa — MDF Coloring Kits</title>
@@ -158,6 +206,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
   cursor:pointer;border-bottom:4px solid var(--wa-dark);box-shadow:0 6px 24px rgba(37,211,102,.4);
   display:flex;align-items:center;gap:8px;text-decoration:none;}
 .wa-float:hover{transform:scale(1.05);}
+
+.social-float{position:fixed;bottom:28px;right:28px;z-index:999;display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+.social-float a{display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:50px;color:#fff;text-decoration:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.18);transition:transform .2s;}
+.social-float a:hover{transform:translateY(-2px);}
+.social-float a.instagram{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-bottom:4px solid #a0106a;}
 
 
 /* ── REVIEW SLIDER ── */
@@ -742,10 +795,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);
   <p>Made with ❤️ in Jaipur, India 🇮🇳</p>
 </div>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/919829428868" target="_blank" class="wa-float">
-  🛒 Order Now →
-</a>
+<!-- Floating Chat Buttons -->
+<div class="social-float">
+  <a href="https://wa.me/919829428868" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">💬 WhatsApp</a>
+  <a href="https://www.instagram.com/anjas_pitaraa.in?igsh=bXgzeTVjOXJveHA1&utm_source=qr" target="_blank" class="instagram" aria-label="Chat on Instagram">📸 Instagram</a>
+</div>
 
 <script>
 function toggleMobileNav() {
